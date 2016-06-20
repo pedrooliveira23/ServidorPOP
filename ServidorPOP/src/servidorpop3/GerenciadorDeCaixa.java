@@ -5,17 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GerenciadorDeCaixa {
-	private String usuario;
 	private ArrayList<String> emails = new ArrayList<String>();
 	private LeitorDeArquivos leitor = new LeitorDeArquivos();
 
 	GerenciadorDeCaixa(String usuario) {
-		this.setUsuario(usuario);
 		LeitorDeArquivos leitor = new LeitorDeArquivos();
-		emails = leitor.lerArquivos(usuario);
+		emails = leitor.listarArquivos(usuario);
 	}
-
-	
 
 	public String listarEmails() {
 		String conteudo = "";
@@ -28,25 +24,11 @@ public class GerenciadorDeCaixa {
 	public String lerEmail(String i) throws NumberFormatException, IOException {
 		ArrayList<String> linhas = leitor.lerArquivo(emails.get(Integer.parseInt(i) - 1));
 		String conteudo = "";
-		for(String linha : linhas) {
-				conteudo += linha + "\n";
+		for(int l = 0; l < linhas.size() - 1; l++) {
+			String linha = linhas.get(l);
+			conteudo += linha + "\n";
 		}
+		conteudo += "\n";
 		return conteudo;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public ArrayList<String> getEmails() {
-		return emails;
-	}
-
-	public void setEmails(ArrayList<String> emails) {
-		this.emails = emails;
 	}
 }

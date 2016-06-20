@@ -24,7 +24,7 @@ public class LeitorDeArquivos {
 		return conteudo;
 	}
 	
-	public ArrayList<String> lerArquivos(String nome) {
+	public ArrayList<String> listarArquivos(String nome) {
 		ArrayList<String> conteudo = new ArrayList<String>();
 		File[] newEmails = new File("/home/" + nome.toLowerCase() + "/Maildir/new/").listFiles();
 		File[] curEmails = new File("/home/" + nome.toLowerCase() + "/Maildir/cur/").listFiles();

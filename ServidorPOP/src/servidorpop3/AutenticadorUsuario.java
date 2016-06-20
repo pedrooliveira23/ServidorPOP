@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AutenticadorUsuario {	
+	private LeitorDeArquivos leitor = new LeitorDeArquivos();
+	
 	public boolean autenticar(String usuario, String senha) {
-		LeitorDeArquivos leitor = new LeitorDeArquivos();
 		try {
 			ArrayList<String> usuarios = leitor.lerArquivo("usuarios.txt");
 			
