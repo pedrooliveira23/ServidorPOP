@@ -46,8 +46,16 @@ public class ServidorPop3 {
 						paraCliente.write(caixa.listarEmails().getBytes());
 					}
 					break;
+				case "RETR":
+					GerenciadorDeCaixa caixa = new GerenciadorDeCaixa(user);
+					String idEmail = comando.substring(comando.indexOf(' ') + 1, comando.length()-1);
+					paraCliente.write(caixa.lerEmail(idEmail).getBytes());
+					break;
 				case "QUIT":
 					paraCliente.write("Até mais!\n".getBytes());
+					break;
+				default:
+					paraCliente.write("Comando inválido tente um destes: 'user', 'pass', 'list', 'retr' e 'quit'.\n".getBytes());
 					break;
 				}
 			}
